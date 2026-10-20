@@ -2,27 +2,27 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Plastic Alchemy AI — Ngonten AI Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-base: #060814;
-      --bg-card: rgba(13, 19, 39, 0.72);
-      --bg-card-hover: rgba(22, 32, 64, 0.85);
+      --bg-base: #060913;
+      --bg-card: rgba(13, 20, 40, 0.75);
+      --bg-card-active: rgba(22, 34, 68, 0.9);
       --border-subtle: rgba(255, 255, 255, 0.08);
-      --border-focus: rgba(0, 212, 255, 0.45);
+      --border-accent: rgba(0, 212, 255, 0.4);
       --primary: #00d4ff;
       --primary-glow: rgba(0, 212, 255, 0.25);
-      --gold: #d4af37;
-      --gold-glow: rgba(212, 175, 55, 0.2);
-      --text-main: #f1f5f9;
+      --gold: #f59e0b;
+      --gold-glow: rgba(245, 158, 11, 0.2);
+      --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --accent-navy: #0a0e23;
-      --radius-lg: 20px;
-      --radius-md: 14px;
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
       --radius-sm: 8px;
     }
 
@@ -35,558 +35,522 @@
     }
 
     body {
-      background-color: var(--bg-base);
+      background: var(--bg-base);
       color: var(--text-main);
       min-height: 100vh;
-      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(212, 175, 55, 0.05) 0%, transparent 45%),
-        linear-gradient(to bottom, #060814, #03040a);
+        radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+        linear-gradient(180deg, #070a17 0%, #03050a 100%);
       background-attachment: fixed;
-      padding-bottom: 90px;
     }
 
-    /* Container */
-    .app-container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 16px 18px;
+    .app-viewport {
+      width: 100%;
+      max-width: 520px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 14px 16px 24px;
     }
 
-    /* Header Nav */
-    header {
+    /* Top Bar */
+    .top-bar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 20px;
-      background: rgba(10, 14, 35, 0.75);
+      padding: 10px 14px;
+      background: rgba(10, 16, 35, 0.8);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border-subtle);
       border-radius: var(--radius-lg);
-      margin-bottom: 22px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-bottom: 14px;
     }
 
-    .brand-wrap {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .brand-icon {
-      width: 38px;
-      height: 38px;
+    .brand-logo {
+      width: 32px;
+      height: 32px;
       background: linear-gradient(135deg, #00d4ff, #0055ff);
-      border-radius: 10px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 18px var(--primary-glow);
+      box-shadow: 0 0 12px var(--primary-glow);
     }
 
-    .brand-icon svg {
-      width: 20px;
-      height: 20px;
+    .brand-logo svg {
+      width: 16px;
+      height: 16px;
       fill: #fff;
     }
 
     .brand-text h1 {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
       color: #fff;
+      line-height: 1.1;
     }
 
     .brand-text span {
-      font-size: 0.68rem;
+      font-size: 0.62rem;
       color: var(--primary);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 600;
     }
 
-    .nav-actions {
+    .top-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
     }
 
-    .badge-pill {
+    .btn-pill {
       font-size: 0.7rem;
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid rgba(0, 212, 255, 0.25);
-      color: var(--primary);
-      padding: 4px 10px;
+      padding: 5px 10px;
       border-radius: 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 500;
-    }
-
-    .btn-help {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      text-decoration: none;
       font-weight: 600;
-    }
-
-    /* Step Sections */
-    .studio-card {
-      background: var(--bg-card);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 22px;
-      margin-bottom: 20px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-      transition: border-color 0.3s;
-    }
-
-    .studio-card:focus-within {
-      border-color: rgba(0, 212, 255, 0.2);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-    }
-
-    .step-tag {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      color: var(--primary);
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-family: 'JetBrains Mono', monospace;
+      gap: 4px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-main);
+      cursor: pointer;
     }
 
-    .step-number {
-      width: 22px;
-      height: 22px;
+    .btn-pill.store {
+      border-color: rgba(245, 158, 11, 0.3);
+      color: var(--gold);
+    }
+
+    /* Step Indicator Bar */
+    .step-stepper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding: 0 6px;
+    }
+
+    .step-node {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .step-node.active {
+      color: var(--primary);
+    }
+
+    .step-node.completed {
+      color: #10b981;
+    }
+
+    .step-circle {
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: var(--primary);
-      color: #03040a;
+      background: rgba(255, 255, 255, 0.06);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 800;
+      font-size: 0.68rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      border: 1px solid var(--border-subtle);
     }
 
-    .section-title {
-      font-size: 1.15rem;
+    .step-node.active .step-circle {
+      background: var(--primary);
+      color: #03050a;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .step-node.completed .step-circle {
+      background: #10b981;
+      color: #fff;
+      border-color: #10b981;
+    }
+
+    .stepper-line {
+      flex: 1;
+      height: 2px;
+      background: var(--border-subtle);
+      margin: 0 8px;
+    }
+
+    /* Screen Views */
+    .screen-view {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      animation: fadeIn 0.25s ease forwards;
+    }
+
+    .screen-view.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Screen Cards */
+    .card-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 18px 16px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+      margin-bottom: 14px;
+    }
+
+    .panel-header {
+      margin-bottom: 14px;
+    }
+
+    .panel-header h2 {
+      font-size: 1.1rem;
       font-weight: 700;
       color: #fff;
-      margin-top: 4px;
     }
 
-    .section-desc {
+    .panel-header p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* Form & Choices */
+    .field-group {
+      margin-bottom: 14px;
+    }
+
+    .field-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .grid-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .grid-options.three-col {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .opt-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      text-align: left;
+    }
+
+    .opt-card:active {
+      transform: scale(0.98);
+    }
+
+    .opt-card.selected {
+      background: rgba(0, 212, 255, 0.12);
+      border-color: var(--primary);
+      box-shadow: 0 0 14px var(--primary-glow);
+    }
+
+    .opt-card .opt-title {
       font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .opt-card .opt-sub {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    .opt-card.selected .opt-sub {
+      color: var(--primary);
+    }
+
+    /* Brainstorm Bar */
+    .brainstorm-box {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .input-text {
+      flex: 1;
+      background: #020409;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: #fff;
+      outline: none;
+    }
+
+    .input-text:focus {
+      border-color: var(--primary);
+    }
+
+    .btn-ai {
+      background: linear-gradient(135deg, #00d4ff, #0066ff);
+      color: #fff;
+      border: none;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px var(--primary-glow);
+    }
+
+    .btn-ai:disabled {
+      opacity: 0.6;
+    }
+
+    /* Idea Carousel Stack */
+    .ideas-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 220px;
+      overflow-y: auto;
+      padding-right: 4px;
+      margin-bottom: 14px;
+    }
+
+    .idea-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .idea-item.active {
+      background: rgba(0, 212, 255, 0.1);
+      border-color: var(--primary);
+    }
+
+    .idea-item-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .idea-item-meta {
+      font-size: 0.68rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
 
-    /* Grid Choices */
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .choice-pill {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-subtle);
-      padding: 12px 14px;
-      border-radius: var(--radius-md);
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.2s ease;
+    /* Canvas Preview Area */
+    .preview-stage {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
-    }
-
-    .choice-pill:hover {
-      background: var(--bg-card-hover);
-      border-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .choice-pill.active {
-      background: rgba(0, 212, 255, 0.12);
-      border-color: var(--primary);
-      box-shadow: 0 0 15px var(--primary-glow);
-    }
-
-    .choice-pill .title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #fff;
-    }
-
-    .choice-pill .desc {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    .choice-pill.active .desc {
-      color: var(--primary);
-    }
-
-    /* Brainstorm Panel */
-    .brainstorm-bar {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-      align-items: center;
-    }
-
-    .btn-brainstorm {
-      background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
-      color: #fff;
-      border: none;
-      padding: 12px 18px;
-      border-radius: var(--radius-md);
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 18px var(--primary-glow);
-      transition: transform 0.15s, opacity 0.15s;
-      white-space: nowrap;
-    }
-
-    .btn-brainstorm:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .btn-brainstorm:active {
-      transform: scale(0.97);
-    }
-
-    .custom-idea-input {
-      flex: 1;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 12px 16px;
-      color: #fff;
-      font-size: 0.85rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .custom-idea-input:focus {
-      border-color: var(--primary);
-    }
-
-    /* Idea Cards Carousel */
-    .ideas-stream {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .idea-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .idea-card:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.18);
-    }
-
-    .idea-card.selected {
-      background: rgba(0, 212, 255, 0.08);
-      border-color: var(--primary);
-      box-shadow: 0 0 16px var(--primary-glow);
-    }
-
-    .idea-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .idea-meta {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .idea-tag {
-      background: rgba(255, 255, 255, 0.06);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-      color: #e2e8f0;
-    }
-
-    /* Master Ingredients & Canvas */
-    .visual-dock {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    @media (max-width: 680px) {
-      .visual-dock {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .preview-box {
-      background: #020409;
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .preview-box header {
-      width: 100%;
-      background: transparent;
-      border: none;
-      padding: 0 0 8px 0;
-      box-shadow: none;
-      margin-bottom: 8px;
-    }
-
-    .preview-box header h4 {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #cbd5e1;
-    }
-
-    .canvas-wrap {
-      width: 100%;
-      aspect-ratio: 9/16;
-      max-height: 290px;
       background: #000;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
+      border-radius: var(--radius-lg);
+      padding: 10px;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 12px;
+    }
+
+    .canvas-container {
+      width: 100%;
+      height: 210px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
     }
 
-    .canvas-wrap.aspect-1-1 {
-      aspect-ratio: 1/1;
-    }
-
-    .canvas-wrap.aspect-16-9 {
-      aspect-ratio: 16/9;
-      max-height: 200px;
-    }
-
     canvas {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: var(--radius-sm);
     }
 
-    .btn-download-asset {
-      margin-top: 10px;
+    .canvas-switch {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    .canvas-switch button {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      padding: 6px;
+      border-radius: var(--radius-sm);
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .canvas-switch button.active {
+      background: rgba(0, 212, 255, 0.15);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-download-now {
       width: 100%;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--border-subtle);
       color: #fff;
       padding: 8px;
       border-radius: var(--radius-sm);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
+      margin-top: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      transition: background 0.2s;
     }
 
-    .btn-download-asset:hover {
-      background: rgba(0, 212, 255, 0.15);
-      border-color: var(--primary);
-    }
-
-    /* Storyboard Cards Deck (10s per shot) */
-    .storyboard-deck {
+    /* Storyboard Tab Switcher */
+    .storyboard-tabs {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .shot-card {
-      background: rgba(10, 15, 32, 0.85);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .shot-card::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--primary);
-    }
-
-    .shot-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      gap: 6px;
       margin-bottom: 12px;
     }
 
-    .shot-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+    .tab-btn {
+      flex: 1;
+      padding: 8px 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      border-radius: var(--radius-md);
+      font-size: 0.72rem;
       font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tab-btn.active {
+      background: rgba(0, 212, 255, 0.15);
+      border-color: var(--primary);
       color: var(--primary);
     }
 
-    .flow-input-guide {
-      font-size: 0.68rem;
-      background: rgba(212, 175, 55, 0.12);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      color: var(--gold);
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-weight: 600;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .prompt-box {
+    .shot-box {
       background: #02050c;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
       padding: 12px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      line-height: 1.5;
-      color: #94a3b8;
-      user-select: all;
       margin-bottom: 10px;
     }
 
-    .prompt-box strong {
-      color: #e2e8f0;
+    .shot-tag {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.68rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--gold);
+      margin-bottom: 6px;
     }
 
-    .asmr-spec {
+    .shot-text {
+      font-size: 0.75rem;
+      line-height: 1.5;
+      color: #cbd5e1;
+      font-family: 'JetBrains Mono', monospace;
+      user-select: all;
+    }
+
+    .foley-badge {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.72rem;
+      gap: 6px;
+      font-size: 0.7rem;
       color: #10b981;
-      margin-bottom: 12px;
       background: rgba(16, 185, 129, 0.08);
       padding: 6px 10px;
-      border-radius: 6px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
     }
 
-    .btn-copy-shot {
-      width: 100%;
-      background: rgba(0, 212, 255, 0.1);
-      border: 1px solid rgba(0, 212, 255, 0.3);
-      color: var(--primary);
-      padding: 8px 14px;
-      border-radius: var(--radius-sm);
-      font-size: 0.75rem;
+    /* Bottom Action Controls */
+    .action-dock {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      padding-top: 10px;
+    }
+
+    .btn-action-primary {
+      flex: 2;
+      background: linear-gradient(135deg, #00d4ff 0%, #0066ff 100%);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: var(--radius-lg);
+      font-size: 0.88rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      transition: all 0.2s;
+      gap: 8px;
+      box-shadow: 0 4px 20px var(--primary-glow);
     }
 
-    .btn-copy-shot:active {
-      background: var(--primary);
-      color: #000;
-    }
-
-    /* Reset Section */
-    .reset-dock {
-      text-align: center;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid var(--border-subtle);
-    }
-
-    .btn-reset {
-      background: transparent;
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #f87171;
-      padding: 10px 20px;
-      border-radius: var(--radius-md);
-      font-size: 0.8rem;
-      font-weight: 700;
+    .btn-action-secondary {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 14px;
+      border-radius: var(--radius-lg);
+      font-size: 0.85rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-reset:hover {
-      background: rgba(239, 68, 68, 0.1);
-      border-color: #ef4444;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 0.72rem;
-      color: #64748b;
-    }
-
-    footer a {
-      color: var(--primary);
-      text-decoration: none;
     }
 
     /* Modal */
@@ -594,48 +558,48 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(8px);
-      z-index: 1000;
+      z-index: 999;
       align-items: center;
       justify-content: center;
       padding: 20px;
     }
 
-    .modal-card {
-      background: #0a0f24;
+    .modal-box {
+      background: #090e21;
       border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      max-width: 480px;
+      border-radius: var(--radius-xl);
+      padding: 20px;
+      max-width: 440px;
       width: 100%;
       color: #cbd5e1;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       line-height: 1.6;
     }
 
-    .modal-card h3 {
+    .modal-box h3 {
       color: #fff;
-      margin-bottom: 12px;
-      font-size: 1.1rem;
+      margin-bottom: 10px;
+      font-size: 1.05rem;
     }
 
-    .modal-card ol {
-      padding-left: 20px;
-      margin-bottom: 16px;
+    .modal-box ol {
+      padding-left: 18px;
+      margin-bottom: 14px;
     }
 
-    .modal-card li {
-      margin-bottom: 8px;
+    .modal-box li {
+      margin-bottom: 6px;
     }
 
-    .btn-close-modal {
+    .btn-close {
       width: 100%;
       background: var(--primary);
-      color: #02040a;
+      color: #000;
       border: none;
       padding: 10px;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
       font-weight: 700;
       cursor: pointer;
     }
@@ -643,631 +607,581 @@
 </head>
 <body>
 
-  <div class="app-container">
-    <!-- Header -->
-    <header>
-      <div class="brand-wrap">
-        <div class="brand-icon">
+  <div class="app-viewport">
+    
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="brand">
+        <div class="brand-logo">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </div>
         <div class="brand-text">
-          <h1>Plastic Alchemy AI</h1>
-          <span>Ngonten AI • Luxury Artisan Studio</span>
+          <h1>Plastic Alchemy</h1>
+          <span>Ngonten AI Studio</span>
         </div>
       </div>
-      <div class="nav-actions">
-        <span class="badge-pill" id="engineStatus">Gemini Live</span>
-        <button class="btn-help" onclick="toggleModal(true)">❓ Cara Pakai</button>
+      <div class="top-actions">
+        <a href="https://ngontenai.store" target="_blank" class="btn-pill store">🛍️ Store</a>
+        <button class="btn-pill" onclick="toggleModal(true)">❓ Panduan</button>
       </div>
     </header>
 
-    <!-- STEP 1: Konfigurasi -->
-    <section class="studio-card">
-      <div class="card-header">
-        <div>
-          <div class="step-tag"><span class="step-number">1</span> Format & Demografi Target</div>
-          <h2 class="section-title">Konfigurasi Video & Audiens</h2>
-          <p class="section-desc">Pilih durasi bertahap 10s dan target negara untuk kontinuitas Google Flow.</p>
-        </div>
+    <!-- Stepper Navigation -->
+    <div class="step-stepper">
+      <div class="step-node active" id="node1" onclick="goToStep(1)">
+        <div class="step-circle">1</div>
+        <span>Format</span>
       </div>
-
-      <div style="margin-top: 14px;">
-        <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">DURASI VIDEO (KLIP 10s)</label>
-        <div class="choice-grid" id="gridDuration">
-          <div class="choice-pill active" data-val="20">
-            <span class="title">20 Detik</span>
-            <span class="desc">2 Klip x 10s (Viral Retention)</span>
-          </div>
-          <div class="choice-pill" data-val="30">
-            <span class="title">30 Detik</span>
-            <span class="desc">3 Klip x 10s (Deep ASMR)</span>
-          </div>
-        </div>
+      <div class="stepper-line"></div>
+      <div class="step-node" id="node2" onclick="goToStep(2)">
+        <div class="step-circle">2</div>
+        <span>Ide & Bahan</span>
       </div>
-
-      <div style="margin-top: 14px;">
-        <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">ASPEK RASIO</label>
-        <div class="choice-grid" id="gridRatio">
-          <div class="choice-pill active" data-val="9:16">
-            <span class="title">9:16 Vertikal</span>
-            <span class="desc">TikTok / Reels / Shorts</span>
-          </div>
-          <div class="choice-pill" data-val="1:1">
-            <span class="title">1:1 Square</span>
-            <span class="desc">Instagram / FB Feed</span>
-          </div>
-          <div class="choice-pill" data-val="16:9">
-            <span class="title">16:9 Cinema</span>
-            <span class="desc">YouTube Long / Web</span>
-          </div>
-        </div>
+      <div class="stepper-line"></div>
+      <div class="step-node" id="node3" onclick="goToStep(3)">
+        <div class="step-circle">3</div>
+        <span>Storyboard</span>
       </div>
+    </div>
 
-      <div style="margin-top: 14px;">
-        <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">TARGET NEGARA (LOKASI DISINKRONKAN)</label>
-        <div class="choice-grid" id="gridCountry">
-          <div class="choice-pill active" data-val="Indonesia">
-            <span class="title">🇮🇩 Indonesia</span>
-            <span class="desc">Dapur Semi-Outdoor / Teras</span>
-          </div>
-          <div class="choice-pill" data-val="United States">
-            <span class="title">🇺🇸 United States</span>
-            <span class="desc">Industrial Maker Studio</span>
-          </div>
-          <div class="choice-pill" data-val="Europe">
-            <span class="title">🇪🇺 Europe / UK</span>
-            <span class="desc">Nordic Zero-Waste Craft</span>
-          </div>
-          <div class="choice-pill" data-val="Global">
-            <span class="title">🌐 Global Universal</span>
-            <span class="desc">Cinematic Dark Studio</span>
+    <!-- SCREEN STEP 1: Format & Target -->
+    <div class="screen-view active" id="screenStep1">
+      <div class="card-panel">
+        <div class="panel-header">
+          <h2>Konfigurasi Video</h2>
+          <p>Tentukan ritme durasi 10s dan target negara audiens.</p>
+        </div>
+
+        <div class="field-group">
+          <span class="field-label">Durasi Video (Klip 10s)</span>
+          <div class="grid-options" id="optDuration">
+            <div class="opt-card selected" data-val="20">
+              <span class="opt-title">20 Detik</span>
+              <span class="opt-sub">2 Klip x 10s (Viral)</span>
+            </div>
+            <div class="opt-card" data-val="30">
+              <span class="opt-title">30 Detik</span>
+              <span class="opt-sub">3 Klip x 10s (ASMR)</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- STEP 2: Ide, Wajan & Bahan Otomatis -->
-    <section class="studio-card">
-      <div class="card-header">
-        <div>
-          <div class="step-tag"><span class="step-number">2</span> Ide, Master Wok & Bahan Terkunci</div>
-          <h2 class="section-title">Brainstorming Produk & Lokasi</h2>
-          <p class="section-desc">Bahan sampah plastik & warna terkunci 100% otomatis mengikuti ide.</p>
+        <div class="field-group">
+          <span class="field-label">Aspek Rasio</span>
+          <div class="grid-options three-col" id="optRatio">
+            <div class="opt-card selected" data-val="9:16">
+              <span class="opt-title">9:16</span>
+              <span class="opt-sub">Shorts / Reels</span>
+            </div>
+            <div class="opt-card" data-val="1:1">
+              <span class="opt-title">1:1</span>
+              <span class="opt-sub">Square Feed</span>
+            </div>
+            <div class="opt-card" data-val="16:9">
+              <span class="opt-title">16:9</span>
+              <span class="opt-sub">Landscape</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div>
-        <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">PILIHAN WAJAN REALISTIS (MASTER INGREDIENTS)</label>
-        <div class="choice-grid" id="gridWok">
-          <div class="choice-pill active" data-val="cast-iron">
-            <span class="title">Cast Iron Wok</span>
-            <span class="desc">Besi Tempa Gelap & Kokoh</span>
-          </div>
-          <div class="choice-pill" data-val="carbon-steel">
-            <span class="title">Carbon Steel</span>
-            <span class="desc">Baja Tempa Semi-Kilau</span>
-          </div>
-          <div class="choice-pill" data-val="copper">
-            <span class="title">Vintage Copper</span>
-            <span class="desc">Tembaga Rose Gold Artisan</span>
-          </div>
-          <div class="choice-pill" data-val="industrial">
-            <span class="title">Heavy Basin</span>
-            <span class="desc">Wajan Baja Workshop Tebal</span>
-          </div>
-          <div class="choice-pill" data-val="ceramic">
-            <span class="title">Ceramic Pan</span>
-            <span class="desc">Permukaan Putih Keramik</span>
+        <div class="field-group">
+          <span class="field-label">Target Negara (Sinkronisasi Latar)</span>
+          <div class="grid-options" id="optCountry">
+            <div class="opt-card selected" data-val="Indonesia">
+              <span class="opt-title">🇮🇩 Indonesia</span>
+              <span class="opt-sub">Dapur Semi-Outdoor</span>
+            </div>
+            <div class="opt-card" data-val="United States">
+              <span class="opt-title">🇺🇸 United States</span>
+              <span class="opt-sub">Industrial Studio</span>
+            </div>
+            <div class="opt-card" data-val="Europe">
+              <span class="opt-title">🇪🇺 Europe</span>
+              <span class="opt-sub">Nordic Zero-Waste</span>
+            </div>
+            <div class="opt-card" data-val="Global">
+              <span class="opt-title">🌐 Universal</span>
+              <span class="opt-sub">Cinematic Studio</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div style="margin-top: 16px;">
-        <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">PILAR KONTEN & BRAINSTORMING AI</label>
-        <div class="brainstorm-bar">
-          <input type="text" id="customIdeaInput" class="custom-idea-input" placeholder="Ketik ide sendiri atau tekan Brainstorm AI...">
-          <button class="btn-brainstorm" id="btnBrainstorm" onclick="fetchBrainstormIdeas()">
-            <span>✨ Brainstorm AI</span>
+      <div class="action-dock">
+        <button class="btn-action-primary" onclick="goToStep(2)">
+          <span>Lanjut ke Ide & Wajan</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN STEP 2: Ide, Bahan Terkunci, Wajan, & Lokasi -->
+    <div class="screen-view" id="screenStep2">
+      <div class="card-panel">
+        <div class="panel-header">
+          <h2>Ide & Wajan Realistis</h2>
+          <p>Bahan sampah otomatis terkunci 100% mengikuti produk.</p>
+        </div>
+
+        <!-- Brainstorm Bar -->
+        <div class="brainstorm-box">
+          <input type="text" id="customIdeaInput" class="input-text" placeholder="Ketik ide atau klik AI...">
+          <button class="btn-ai" id="btnAiBrainstorm" onclick="triggerAiBrainstorm()">
+            <span>✨ AI Ide</span>
+          </button>
+        </div>
+
+        <!-- Carousel Ide -->
+        <div class="ideas-stack" id="ideasStack"></div>
+
+        <!-- Pilihan 5 Wajan Realistis -->
+        <div class="field-group" style="margin-top: 12px;">
+          <span class="field-label">Pilihan Wajan (Master Ingredients)</span>
+          <div class="grid-options" id="optWok">
+            <div class="opt-card selected" data-val="cast-iron">
+              <span class="opt-title">Cast Iron</span>
+              <span class="opt-sub">Besi Hitam Tempa</span>
+            </div>
+            <div class="opt-card" data-val="carbon-steel">
+              <span class="opt-title">Carbon Steel</span>
+              <span class="opt-sub">Baja Kilau Halus</span>
+            </div>
+            <div class="opt-card" data-val="copper">
+              <span class="opt-title">Vintage Copper</span>
+              <span class="opt-sub">Tembaga Rose Gold</span>
+            </div>
+            <div class="opt-card" data-val="ceramic">
+              <span class="opt-title">Ceramic Pan</span>
+              <span class="opt-sub">Wajan Putih Bersih</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pratinjau Kanvas Fleksibel -->
+        <div class="preview-stage">
+          <div class="canvas-container">
+            <canvas id="mainPreviewCanvas"></canvas>
+          </div>
+          <div class="canvas-switch">
+            <button class="active" id="btnTabWok" onclick="switchCanvasView('wok')">Wajan (Master)</button>
+            <button id="btnTabLocation" onclick="switchCanvasView('location')">Latar (Lokasi)</button>
+          </div>
+          <button class="btn-download-now" onclick="downloadCurrentCanvas()">
+            📥 Unduh Gambar Acuan
           </button>
         </div>
       </div>
 
-      <!-- Daftar 5 Rekomendasi Ide Dinamis -->
-      <div class="ideas-stream" id="ideasList"></div>
+      <div class="action-dock">
+        <button class="btn-action-secondary" onclick="goToStep(1)">← Kembali</button>
+        <button class="btn-action-primary" onclick="goToStep(3)">
+          <span>Buka Storyboard Studio</span>
+          <span>→</span>
+        </button>
+      </div>
+    </div>
 
-      <!-- Dual Preview Dock (Master Wok + Lokasi) -->
-      <div class="visual-dock">
-        <div class="preview-box">
-          <header>
-            <h4>Wajan Realistis (Master Ingredient)</h4>
-          </header>
-          <div class="canvas-wrap" id="wrapWok">
-            <canvas id="canvasWok"></canvas>
+    <!-- SCREEN STEP 3: Storyboard 10 Detik Mandiri -->
+    <div class="screen-view" id="screenStep3">
+      <div class="card-panel">
+        <div class="panel-header">
+          <h2>Storyboard Studio 10s</h2>
+          <p>Klip terpisah per 10 detik untuk kontinuitas Google Flow.</p>
+        </div>
+
+        <!-- Tab Klip 1, 2, 3 -->
+        <div class="storyboard-tabs" id="storyboardTabs">
+          <button class="tab-btn active" onclick="switchShot(1)">KLIP 1 (0-10s)</button>
+          <button class="tab-btn" onclick="switchShot(2)">KLIP 2 (10-20s)</button>
+          <button class="tab-btn" id="btnTabShot3" onclick="switchShot(3)">KLIP 3 (20-30s)</button>
+        </div>
+
+        <!-- Display Shot Aktif -->
+        <div class="shot-box">
+          <div class="shot-tag">
+            <span id="shotHeaderTitle">KLIP 1: THE MELT HOOK</span>
+            <span id="shotInputRef">Input: Wajan + Latar</span>
           </div>
-          <button class="btn-download-asset" onclick="downloadCanvas('canvasWok', 'master-wok-reference.png')">
-            📥 Unduh Master Reference Image
-          </button>
+          <div class="shot-text" id="shotTextDisplay"></div>
         </div>
 
-        <div class="preview-box">
-          <header>
-            <h4 id="locationTitle">Latar Lokasi (Studio Backdrop)</h4>
-          </header>
-          <div class="canvas-wrap" id="wrapLocation">
-            <canvas id="canvasLocation"></canvas>
+        <div class="foley-badge">
+          <span>🔊 Foley ASMR:</span>
+          <span id="foleyTextDisplay">Crisp plastic shuffling & soft pan sizzle.</span>
+        </div>
+
+        <button class="btn-download-now" style="background: rgba(0, 212, 255, 0.12); border-color: var(--primary); color: var(--primary);" onclick="copyCurrentShot()">
+          📋 Salin Prompt Klip Ini
+        </button>
+
+        <!-- Caption Box -->
+        <div style="margin-top: 14px;">
+          <span class="field-label">Caption & Hashtags Otomatis</span>
+          <div class="shot-box" style="margin-bottom: 6px;">
+            <div class="shot-text" id="captionTextDisplay" style="color: #94a3b8;"></div>
           </div>
-          <button class="btn-download-asset" onclick="downloadCanvas('canvasLocation', 'location-backdrop-reference.png')">
-            📥 Unduh Gambar Latar Lokasi
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- STEP 3: Storyboard Deck 10 Detik Mandiri -->
-    <section class="studio-card">
-      <div class="card-header">
-        <div>
-          <div class="step-tag"><span class="step-number">3</span> Storyboard Google Flow (10s per Shot)</div>
-          <h2 class="section-title">Produksi Multi-Shot & Audio ASMR Murni</h2>
-          <p class="section-desc">Salin prompt satu per satu ke Google Flow untuk menjaga kontinuitas visual.</p>
+          <button class="btn-download-now" onclick="copyCaption()">📋 Salin Caption</button>
         </div>
       </div>
 
-      <div class="storyboard-deck" id="storyboardDeck">
-        <!-- Render Otomatis Klip 1, 2, 3 -->
+      <div class="action-dock">
+        <button class="btn-action-secondary" onclick="confirmReset()">🔄 Reset Proyek</button>
+        <button class="btn-action-primary" onclick="goToStep(2)">← Edit Ide</button>
       </div>
+    </div>
 
-      <!-- Caption & Hashtags -->
-      <div style="margin-top: 24px;">
-        <label style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">CAPTION VIRAL & HASHTAGS (ASMR CRAFT)</label>
-        <div class="prompt-box" id="captionBox" style="margin-top: 8px;"></div>
-        <button class="btn-copy-shot" onclick="copyText('captionBox')">📋 Salin Caption & Hashtags</button>
-      </div>
-
-      <!-- Tombol Reset Selesai -->
-      <div class="reset-dock">
-        <button class="btn-reset" onclick="confirmResetProject()">🔄 Selesai & Buat Konten Baru</button>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>© 2026 <strong>Plastic Alchemy AI</strong> — Powered by <a href="https://ngontenai.store" target="_blank">Ngonten AI</a> & <a href="https://t.me/NgontenAI" target="_blank">Telegram Komunitas</a></p>
-    </footer>
   </div>
 
   <!-- Modal Bantuan -->
   <div class="modal-backdrop" id="helpModal">
-    <div class="modal-card">
+    <div class="modal-box">
       <h3>Cara Eksekusi di Google Flow</h3>
       <ol>
-        <li><strong>Unduh Gambar Master Wok</strong> di Step 2, lalu unggah ke kolom <em>Ingredients</em> di Google Flow.</li>
-        <li><strong>Jalankan Klip 1 (0–10s):</strong> Salin teks Shot 1 ke Flow. Biarkan me-render 10 detik pertama.</li>
-        <li><strong>Jalankan Klip 2 (10–20s):</strong> Unduh <em>Last Frame</em> (detik ke-10) dari video Klip 1, jadikan acuan awal untuk Klip 2, lalu tempel teks Shot 2.</li>
-        <li><strong>Klip 3 (20–30s):</strong> Ulangi dengan mengambil <em>Last Frame</em> Klip 2.</li>
-        <li>Gabungkan video klip tanpa musik latar untuk efek <strong>Pure Foley ASMR</strong> viral!</li>
+        <li><strong>Step 2:</strong> Unduh gambar Wajan (Master Ingredients) dan masukkan ke kolom <em>Ingredients</em> Flow.</li>
+        <li><strong>Klip 1:</strong> Masukkan prompt Klip 1 (10 detik pertama) ke Flow.</li>
+        <li><strong>Klip 2:</strong> Ambil <em>Last Frame</em> (detik ke-10) Klip 1, lalu tempel prompt Klip 2.</li>
+        <li><strong>Klip 3:</strong> Ambil <em>Last Frame</em> Klip 2, lalu tempel prompt Klip 3.</li>
+        <li>Gabungkan video klip tanpa musik latar untuk efek ASMR murni!</li>
       </ol>
-      <button class="btn-close-modal" onclick="toggleModal(false)">Mengerti & Kembali</button>
+      <button class="btn-close" onclick="toggleModal(false)">Tutup Panduan</button>
     </div>
   </div>
 
   <script>
     // State Aplikasi
     const state = {
+      currentStep: 1,
       duration: 20,
       ratio: "9:16",
       country: "Indonesia",
       wok: "cast-iron",
+      activeCanvasTab: "wok",
+      activeShot: 1,
       selectedIdea: {
         product: "Coaster Geometris Terrazzo",
-        wasteMaterial: "Tutup Botol HDPE Merah, Biru, & Putih",
+        wasteMaterial: "Tutup Botol HDPE Merah & Biru",
         colorPalette: "Vibrant Marble Mosaic",
         vibe: "Tatakan cangkir estetik bergaya kafe modern"
       }
     };
 
-    // Bank Data Ide Lokal (Smart Fallback jika API Vercel belum ada Key)
     const fallbackIdeas = [
       {
         product: "Coaster Geometris Terrazzo",
-        wasteMaterial: "Tutup Botol HDPE Merah, Biru & Putih",
+        wasteMaterial: "Tutup Botol HDPE Merah & Biru",
         colorPalette: "Vibrant Marble Mosaic",
-        vibe: "Tatakan cangkir estetik bergaya kafe modern"
+        vibe: "Tatakan cangkir estetik modern"
       },
       {
         product: "Minimalist Soap Dish Arch",
-        wasteMaterial: "Botol Shampo & Sabun HDPE Kuning & Teal",
+        wasteMaterial: "Botol Sabun HDPE Kuning & Teal",
         colorPalette: "Smooth Pastel Swirl",
-        vibe: "Wadah sabun bertekstur marmer mewah"
+        vibe: "Wadah sabun lekukan marmer mewah"
       },
       {
         product: "Sculptural Incense Holder",
-        wasteMaterial: "Tutup Galon & Sendok Plastik PP Bening & Hitam",
-        colorPalette: "Smoky Onyx & Translucent",
-        vibe: "Dudukan dupa aroma terapi zen artisan"
+        wasteMaterial: "Tutup Galon & Sendok PP Bening",
+        colorPalette: "Smoky Onyx Translucent",
+        vibe: "Dudukan dupa aroma terapi zen"
       },
       {
         product: "Modular Desk Cable Organizer",
-        wasteMaterial: "Wadah Makanan Bekas PP Abu-abu & Oranye",
+        wasteMaterial: "Wadah Makanan PP Abu-abu & Oranye",
         colorPalette: "Industrial Matte Dual-Tone",
-        vibe: "Aksesoris meja kerja minimalis rapi"
+        vibe: "Aksesoris meja kerja minimalis"
       },
       {
         product: "Organic Wave Plant Pot",
-        wasteMaterial: "Kantong Kresek LDPE Putih & Tutup Hijau",
+        wasteMaterial: "Kantong Kresek LDPE Putih & Hijau",
         colorPalette: "Jade & Milk Swirl",
-        vibe: "Pot sukulen mungil bergaya batu giok"
+        vibe: "Pot sukulen mungil bergaya giok"
       }
     ];
 
-    // Inisialisasi
     window.addEventListener('DOMContentLoaded', () => {
-      initListeners();
+      initOptionClicks();
       renderIdeasList(fallbackIdeas);
-      renderCanvases();
-      renderStoryboard();
+      renderActiveCanvas();
+      updateStoryboardContent();
     });
 
-    function initListeners() {
-      // Toggle Tombol Pilihan
-      bindChoiceGrid('gridDuration', (val) => {
+    // Navigasi Step
+    function goToStep(step) {
+      state.currentStep = step;
+      document.querySelectorAll('.screen-view').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.step-node').forEach((node, idx) => {
+        node.classList.remove('active');
+        if (idx + 1 < step) node.classList.add('completed');
+        else node.classList.remove('completed');
+        if (idx + 1 === step) node.classList.add('active');
+      });
+
+      document.getElementById(`screenStep${step}`).classList.add('active');
+
+      if (step === 2) renderActiveCanvas();
+      if (step === 3) {
+        document.getElementById('btnTabShot3').style.display = state.duration === 30 ? 'block' : 'none';
+        switchShot(1);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Pilihan Klik Option Card
+    function initOptionClicks() {
+      setupGroup('optDuration', val => {
         state.duration = parseInt(val);
-        renderStoryboard();
       });
-
-      bindChoiceGrid('gridRatio', (val) => {
+      setupGroup('optRatio', val => {
         state.ratio = val;
-        updateCanvasAspectRatio();
-        renderCanvases();
-        renderStoryboard();
+        renderActiveCanvas();
       });
-
-      bindChoiceGrid('gridCountry', (val) => {
+      setupGroup('optCountry', val => {
         state.country = val;
-        renderCanvases();
-        renderStoryboard();
+        renderActiveCanvas();
       });
-
-      bindChoiceGrid('gridWok', (val) => {
+      setupGroup('optWok', val => {
         state.wok = val;
-        renderCanvases();
-        renderStoryboard();
+        renderActiveCanvas();
       });
 
-      // Input Ide Kustom
       document.getElementById('customIdeaInput').addEventListener('input', (e) => {
         if (e.target.value.trim().length > 2) {
           state.selectedIdea = {
             product: e.target.value.trim(),
             wasteMaterial: "Campuran Sampah Polimer Terkurasi",
-            colorPalette: "Artisan Dynamic Swirl",
-            vibe: "Karya daur ulang orisinal pengguna"
+            colorPalette: "Artisan Dynamic Marble",
+            vibe: "Kreasi kustom pengguna"
           };
-          renderStoryboard();
+          updateStoryboardContent();
         }
       });
     }
 
-    function bindChoiceGrid(containerId, callback) {
-      const container = document.getElementById(containerId);
+    function setupGroup(id, callback) {
+      const container = document.getElementById(id);
       container.addEventListener('click', (e) => {
-        const pill = e.target.closest('.choice-pill');
-        if (!pill) return;
-        container.querySelectorAll('.choice-pill').forEach(el => el.classList.remove('active'));
-        pill.classList.add('active');
-        callback(pill.dataset.val);
+        const card = e.target.closest('.opt-card');
+        if (!card) return;
+        container.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        callback(card.dataset.val);
       });
     }
 
-    // Panggil API Vercel Serverless / Fallback
-    async function fetchBrainstormIdeas() {
-      const btn = document.getElementById('btnBrainstorm');
-      const statusBadge = document.getElementById('engineStatus');
+    // Brainstorm AI via Vercel / Fallback
+    async function triggerAiBrainstorm() {
+      const btn = document.getElementById('btnAiBrainstorm');
       btn.disabled = true;
-      btn.innerHTML = '<span>⏳ Memikirkan...</span>';
+      btn.innerHTML = '<span>⏳ Pikir...</span>';
 
       try {
         const res = await fetch('/api/brainstorm', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            country: state.country,
-            persona: 'Gen Z / DIY Creator',
-            pilar: 'Dekor Minimalis & Living'
-          })
+          body: JSON.stringify({ country: state.country, persona: 'Gen Z / DIY Creator' })
         });
-
         const data = await res.json();
         if (res.ok && data.ideas && data.ideas.length > 0) {
           renderIdeasList(data.ideas);
-          statusBadge.innerText = 'Gemini Online';
         } else {
-          throw new Error('Fallback local');
+          throw new Error();
         }
       } catch (err) {
-        // Otomatis kocok fallback lokal jika backend vercel belum diberi API Key
         const shuffled = [...fallbackIdeas].sort(() => 0.5 - Math.random());
         renderIdeasList(shuffled);
-        statusBadge.innerText = 'Smart Local Mode';
       } finally {
         setTimeout(() => {
           btn.disabled = false;
-          btn.innerHTML = '<span>✨ Brainstorm AI</span>';
-        }, 1500);
+          btn.innerHTML = '<span>✨ AI Ide</span>';
+        }, 1200);
       }
     }
 
     function renderIdeasList(ideas) {
-      const listEl = document.getElementById('ideasList');
-      listEl.innerHTML = '';
+      const stack = document.getElementById('ideasStack');
+      stack.innerHTML = '';
       ideas.forEach((idea, idx) => {
-        const isSelected = idx === 0;
-        if (isSelected) state.selectedIdea = idea;
+        const isSel = idx === 0;
+        if (isSel) state.selectedIdea = idea;
 
-        const card = document.createElement('div');
-        card.className = `idea-card ${isSelected ? 'selected' : ''}`;
-        card.innerHTML = `
-          <div>
-            <div class="idea-title">
-              <span>♻️ ${idea.product}</span>
-            </div>
-            <div class="idea-meta">
-              <span class="idea-tag">📦 ${idea.wasteMaterial}</span>
-              <span class="idea-tag">🎨 ${idea.colorPalette}</span>
-            </div>
-          </div>
-          <span style="font-size: 0.75rem; color: var(--primary);">Pilih →</span>
+        const el = document.createElement('div');
+        el.className = `idea-item ${isSel ? 'active' : ''}`;
+        el.innerHTML = `
+          <div class="idea-item-title">♻️ ${idea.product}</div>
+          <div class="idea-item-meta">📦 ${idea.wasteMaterial} • 🎨 ${idea.colorPalette}</div>
         `;
-
-        card.addEventListener('click', () => {
-          document.querySelectorAll('.idea-card').forEach(c => c.classList.remove('selected'));
-          card.classList.add('selected');
+        el.addEventListener('click', () => {
+          document.querySelectorAll('.idea-item').forEach(i => i.classList.remove('active'));
+          el.classList.add('active');
           state.selectedIdea = idea;
-          renderStoryboard();
+          updateStoryboardContent();
         });
-
-        listEl.appendChild(card);
+        stack.appendChild(el);
       });
-      renderStoryboard();
+      updateStoryboardContent();
     }
 
-    // Render Canvas Wajan & Lokasi
-    function updateCanvasAspectRatio() {
-      const wraps = [document.getElementById('wrapWok'), document.getElementById('wrapLocation')];
-      wraps.forEach(wrap => {
-        wrap.className = 'canvas-wrap';
-        if (state.ratio === '1:1') wrap.classList.add('aspect-1-1');
-        if (state.ratio === '16:9') wrap.classList.add('aspect-16-9');
-      });
+    // Switch & Render Canvas
+    function switchCanvasView(type) {
+      state.activeCanvasTab = type;
+      document.getElementById('btnTabWok').classList.toggle('active', type === 'wok');
+      document.getElementById('btnTabLocation').classList.toggle('active', type === 'location');
+      renderActiveCanvas();
     }
 
-    function renderCanvases() {
-      renderWokCanvas();
-      renderLocationCanvas();
-    }
-
-    function renderWokCanvas() {
-      const canvas = document.getElementById('canvasWok');
+    function renderActiveCanvas() {
+      const canvas = document.getElementById('mainPreviewCanvas');
       const ctx = canvas.getContext('2d');
       const [w, h] = state.ratio === '9:16' ? [720, 1280] : state.ratio === '1:1' ? [1080, 1080] : [1280, 720];
       canvas.width = w;
       canvas.height = h;
 
-      // Studio Table Background
-      const gradBg = ctx.createRadialGradient(w/2, h/2, 50, w/2, h/2, Math.max(w, h));
-      gradBg.addColorStop(0, '#1a1f36');
-      gradBg.addColorStop(1, '#05070e');
-      ctx.fillStyle = gradBg;
-      ctx.fillRect(0, 0, w, h);
+      if (state.activeCanvasTab === 'wok') {
+        // Render Wajan Realistis
+        const bgGrad = ctx.createRadialGradient(w/2, h/2, 40, w/2, h/2, Math.max(w, h));
+        bgGrad.addColorStop(0, '#161d36');
+        bgGrad.addColorStop(1, '#05070e');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, w, h);
 
-      // Wok Specs based on state
-      const wokRadius = Math.min(w, h) * 0.34;
-      const cx = w / 2;
-      const cy = h / 2;
+        const radius = Math.min(w, h) * 0.35;
+        const cx = w / 2, cy = h / 2;
 
-      // Outer Shadow
-      ctx.shadowColor = 'rgba(0,0,0,0.8)';
-      ctx.shadowBlur = 40;
-      ctx.beginPath();
-      ctx.arc(cx, cy, wokRadius, 0, Math.PI * 2);
-      ctx.fillStyle = '#0a0d18';
-      ctx.fill();
-      ctx.shadowBlur = 0;
-
-      // Rim Gradient
-      let rimColor1 = '#3a3f55', rimColor2 = '#151824';
-      if (state.wok === 'copper') { rimColor1 = '#b87333'; rimColor2 = '#5c3a1a'; }
-      if (state.wok === 'carbon-steel') { rimColor1 = '#64748b'; rimColor2 = '#1e293b'; }
-      if (state.wok === 'ceramic') { rimColor1 = '#e2e8f0'; rimColor2 = '#94a3b8'; }
-
-      const rimGrad = ctx.createLinearGradient(cx - wokRadius, cy - wokRadius, cx + wokRadius, cy + wokRadius);
-      rimGrad.addColorStop(0, rimColor1);
-      rimGrad.addColorStop(1, rimColor2);
-      ctx.strokeStyle = rimGrad;
-      ctx.lineWidth = 14;
-      ctx.stroke();
-
-      // Inside Wok Surface
-      const innerGrad = ctx.createRadialGradient(cx, cy, 20, cx, cy, wokRadius - 7);
-      if (state.wok === 'ceramic') {
-        innerGrad.addColorStop(0, '#f8fafc');
-        innerGrad.addColorStop(1, '#cbd5e1');
-      } else {
-        innerGrad.addColorStop(0, '#1e2238');
-        innerGrad.addColorStop(0.7, '#111322');
-        innerGrad.addColorStop(1, '#080912');
-      }
-      ctx.beginPath();
-      ctx.arc(cx, cy, wokRadius - 7, 0, Math.PI * 2);
-      ctx.fillStyle = innerGrad;
-      ctx.fill();
-
-      // Artisan Black Glove Hand Outline (Minimalist Silhouette)
-      ctx.fillStyle = 'rgba(12, 14, 22, 0.9)';
-      ctx.beginPath();
-      ctx.roundRect(cx - 30, h - (h * 0.22), 60, h * 0.25, 20);
-      ctx.fill();
-    }
-
-    function renderLocationCanvas() {
-      const canvas = document.getElementById('canvasLocation');
-      const ctx = canvas.getContext('2d');
-      const [w, h] = state.ratio === '9:16' ? [720, 1280] : state.ratio === '1:1' ? [1080, 1080] : [1280, 720];
-      canvas.width = w;
-      canvas.height = h;
-
-      const locTitle = document.getElementById('locationTitle');
-      const grad = ctx.createLinearGradient(0, 0, 0, h);
-
-      if (state.country === 'Indonesia') {
-        locTitle.innerText = "Latar: Dapur Semi-Outdoor / Teras Indonesia";
-        grad.addColorStop(0, '#1c2826');
-        grad.addColorStop(0.6, '#0f1715');
-        grad.addColorStop(1, '#050807');
-      } else if (state.country === 'United States') {
-        locTitle.innerText = "Latar: Industrial Maker Studio (USA)";
-        grad.addColorStop(0, '#331c19');
-        grad.addColorStop(0.6, '#1a0e0c');
-        grad.addColorStop(1, '#080504');
-      } else if (state.country === 'Europe') {
-        locTitle.innerText = "Latar: Nordic Minimalist Craft Studio (Europe)";
-        grad.addColorStop(0, '#1e2638');
-        grad.addColorStop(0.6, '#101522');
-        grad.addColorStop(1, '#05070c');
-      } else {
-        locTitle.innerText = "Latar: Dark Moody Cinematic Studio (Global)";
-        grad.addColorStop(0, '#15151b');
-        grad.addColorStop(0.6, '#0d0d12');
-        grad.addColorStop(1, '#030305');
-      }
-
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, w, h);
-
-      // Ambient Bokeh Light
-      for (let i = 0; i < 6; i++) {
+        // Shadow & Wok Base
+        ctx.shadowColor = 'rgba(0,0,0,0.85)';
+        ctx.shadowBlur = 35;
         ctx.beginPath();
-        const bx = Math.random() * w;
-        const by = Math.random() * (h * 0.6);
-        const br = 40 + Math.random() * 80;
-        ctx.arc(bx, by, br, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.02)';
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.fillStyle = '#0a0d18';
         ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // Wok Rim Color
+        let rim1 = '#475569', rim2 = '#0f172a';
+        if (state.wok === 'copper') { rim1 = '#c27838'; rim2 = '#613214'; }
+        if (state.wok === 'carbon-steel') { rim1 = '#94a3b8'; rim2 = '#1e293b'; }
+        if (state.wok === 'ceramic') { rim1 = '#f8fafc'; rim2 = '#94a3b8'; }
+
+        const rimGrad = ctx.createLinearGradient(cx - radius, cy - radius, cx + radius, cy + radius);
+        rimGrad.addColorStop(0, rim1);
+        rimGrad.addColorStop(1, rim2);
+        ctx.strokeStyle = rimGrad;
+        ctx.lineWidth = 14;
+        ctx.stroke();
+
+        // Inner Pan
+        const inGrad = ctx.createRadialGradient(cx, cy, 20, cx, cy, radius - 7);
+        if (state.wok === 'ceramic') {
+          inGrad.addColorStop(0, '#ffffff');
+          inGrad.addColorStop(1, '#cbd5e1');
+        } else {
+          inGrad.addColorStop(0, '#1c2138');
+          inGrad.addColorStop(1, '#070912');
+        }
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius - 7, 0, Math.PI * 2);
+        ctx.fillStyle = inGrad;
+        ctx.fill();
+
+        // Black Glove Artisan Touch
+        ctx.fillStyle = '#0f1422';
+        ctx.beginPath();
+        ctx.roundRect(cx - 30, h - (h * 0.2), 60, h * 0.22, 16);
+        ctx.fill();
+      } else {
+        // Render Latar Studio
+        const locGrad = ctx.createLinearGradient(0, 0, 0, h);
+        if (state.country === 'Indonesia') {
+          locGrad.addColorStop(0, '#1e2926'); locGrad.addColorStop(1, '#080d0c');
+        } else if (state.country === 'United States') {
+          locGrad.addColorStop(0, '#361e1b'); locGrad.addColorStop(1, '#0c0706');
+        } else if (state.country === 'Europe') {
+          locGrad.addColorStop(0, '#1b2338'); locGrad.addColorStop(1, '#080b12');
+        } else {
+          locGrad.addColorStop(0, '#181820'); locGrad.addColorStop(1, '#050508');
+        }
+        ctx.fillStyle = locGrad;
+        ctx.fillRect(0, 0, w, h);
+
+        // Soft Lighting Bokeh
+        for (let i = 0; i < 5; i++) {
+          ctx.beginPath();
+          ctx.arc(w * 0.2 + (i * 120), h * 0.3 + (i * 30), 50 + (i * 20), 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.025)';
+          ctx.fill();
+        }
       }
     }
 
-    function downloadCanvas(canvasId, filename) {
-      const canvas = document.getElementById(canvasId);
+    function downloadCurrentCanvas() {
+      const canvas = document.getElementById('mainPreviewCanvas');
       const link = document.createElement('a');
-      link.download = filename;
+      link.download = `${state.activeCanvasTab}-reference-${state.ratio.replace(':', '-')}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
     }
 
-    // Render Storyboard 10 Detik
-    function renderStoryboard() {
-      const deck = document.getElementById('storyboardDeck');
-      const idea = state.selectedIdea;
-      const count = state.duration === 20 ? 2 : 3;
-
-      let html = '';
-
-      // Shot 1
-      html += `
-        <div class="shot-card">
-          <div class="shot-header">
-            <span class="shot-badge">⏱️ SHOT 1: THE MELT HOOK [00:00 - 00:10]</span>
-            <span class="flow-input-guide">Input Flow: Master Wok + Location Image</span>
-          </div>
-          <div class="prompt-box" id="shotPrompt1">
-            <strong>[Shot 1 - 10s]:</strong> Close-up top-down view. Artisan hands in matte black thermal craft gloves gently scatter shredded <strong>${idea.wasteMaterial}</strong> into the center of the seasoned <strong>${state.wok}</strong>. Gentle thermal softening begins, slow cinematic shutter, polymers gently fusing into vibrant molten <strong>${idea.colorPalette}</strong>. Soft bokeh of <strong>${state.country}</strong> artisan workshop in background. Highly tactile, realistic physical viscosity, zero flame, zero toxic smoke, pure artisanal craft process --ar ${state.ratio}
-          </div>
-          <div class="asmr-spec">
-            🔊 Foley ASMR: Crisp dry plastic sorting & shuffling, subtle low sizzle of clean heating pan.
-          </div>
-          <button class="btn-copy-shot" onclick="copyText('shotPrompt1')">📋 Salin Prompt Shot 1 (10s)</button>
-        </div>
-      `;
-
-      // Shot 2
-      html += `
-        <div class="shot-card">
-          <div class="shot-header">
-            <span class="shot-badge">⏱️ SHOT 2: THE SWIRL & MOLD [00:10 - 00:20]</span>
-            <span class="flow-input-guide">Input Flow: Last Frame dari Shot 1</span>
-          </div>
-          <div class="prompt-box" id="shotPrompt2">
-            <strong>[Shot 2 - 10s]:</strong> Macro 45-degree angle. Artisan uses an ergonomic silicone stirring tool to gracefully swirl the molten <strong>${idea.colorPalette}</strong> resin inside the <strong>${state.wok}</strong>, creating intricate marble veins. A precision geometric mold press is smoothly placed on top to shape <strong>${idea.product}</strong>. Fluid solidification begins smoothly, clean studio illumination --ar ${state.ratio}
-          </div>
-          <div class="asmr-spec">
-            🔊 Foley ASMR: Viscous swirling resonance, gentle silicone blade glide, satisfying soft mechanical press.
-          </div>
-          <button class="btn-copy-shot" onclick="copyText('shotPrompt2')">📋 Salin Prompt Shot 2 (10s)</button>
-        </div>
-      `;
-
-      // Shot 3 (Khusus 30s)
-      if (count === 3) {
-        html += `
-          <div class="shot-card">
-            <div class="shot-header">
-              <span class="shot-badge">⏱️ SHOT 3: THE DEMOLD & TACTILE KNOCK [00:20 - 00:30]</span>
-              <span class="flow-input-guide">Input Flow: Last Frame dari Shot 2</span>
-            </div>
-            <div class="prompt-box" id="shotPrompt3">
-              <strong>[Shot 3 - 10s]:</strong> Eye-level macro perspective. Artisan hands lift the freshly cured <strong>${idea.product}</strong> cleanly out of the pan. The finished item displays stunning high-gloss marble edges and terrazzo specks. Artisan gently taps fingernail against the cured solid surface to prove rock-solid durability. Proud presentation under soft studio lighting --ar ${state.ratio}
-            </div>
-            <div class="asmr-spec">
-              🔊 Foley ASMR: Crisp ceramic demold click, sharp clean solid tactile knocks, smooth surface caress.
-            </div>
-            <button class="btn-copy-shot" onclick="copyText('shotPrompt3')">📋 Salin Prompt Shot 3 (10s)</button>
-          </div>
-        `;
-      }
-
-      deck.innerHTML = html;
-
-      // Caption Box
-      document.getElementById('captionBox').innerText = 
-`Ubah sampah plastik jadi ${idea.product} bernilai seni tinggi! ♻️✨
-Dibuat dari lelehan ${idea.wasteMaterial} dengan tekstur marmer estetik. 
-
-Tonton sampai habis untuk dengerin suara ketukan padatnya! 🎧🔊
-
-#PlasticAlchemy #NgontenAI #OddlySatisfying #PureASMR #NoMusic #DIYCraft #ZeroWaste #RecycleArt #HandmadeDecor`;
+    // Storyboard Tabs & Update
+    function switchShot(shotNum) {
+      state.activeShot = shotNum;
+      document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === shotNum);
+      });
+      updateStoryboardContent();
     }
 
-    function copyText(elementId) {
-      const text = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('Prompt berhasil disalin ke clipboard!');
-      });
+    function updateStoryboardContent() {
+      const idea = state.selectedIdea;
+      const titleEl = document.getElementById('shotHeaderTitle');
+      const refEl = document.getElementById('shotInputRef');
+      const textEl = document.getElementById('shotTextDisplay');
+      const foleyEl = document.getElementById('foleyTextDisplay');
+
+      if (state.activeShot === 1) {
+        titleEl.innerText = "KLIP 1: THE MELT HOOK [00:00 - 00:10]";
+        refEl.innerText = "Input: Wajan + Latar";
+        textEl.innerText = `Close-up top-down view. Artisan hands in matte black thermal craft gloves gently scatter shredded ${idea.wasteMaterial} into the seasoned ${state.wok}. Slow cinematic shutter, gentle thermal softening begins, polymers fusing into vibrant molten ${idea.colorPalette}. Soft bokeh of ${state.country} workshop in background. Highly tactile, realistic physical viscosity, zero flame, zero toxic smoke --ar ${state.ratio}`;
+        foleyEl.innerText = "Crisp plastic shuffling, subtle clean low sizzle of warm pan.";
+      } else if (state.activeShot === 2) {
+        titleEl.innerText = "KLIP 2: THE SWIRL & MOLD [00:10 - 00:20]";
+        refEl.innerText = "Input: Last Frame Klip 1";
+        textEl.innerText = `Macro 45-degree angle. Artisan uses an ergonomic silicone stirring tool to gracefully swirl the molten ${idea.colorPalette} resin inside the ${state.wok}, creating intricate marble veins. A precision geometric mold press is smoothly placed on top to shape ${idea.product}. Viscous solidification begins under studio illumination --ar ${state.ratio}`;
+        foleyEl.innerText = "Viscous swirling glide, satisfying soft mechanical mold press.";
+      } else {
+        titleEl.innerText = "KLIP 3: THE DEMOLD & KNOCK [00:20 - 00:30]";
+        refEl.innerText = "Input: Last Frame Klip 2";
+        textEl.innerText = `Eye-level macro view. Artisan lifts cured ${idea.product} cleanly out of the pan. The finished item displays stunning high-gloss marble edges. Artisan gently taps fingernail against cured solid surface to prove rock-solid durability under soft studio lighting --ar ${state.ratio}`;
+        foleyEl.innerText = "Crisp ceramic demold click, sharp clean solid tactile knocks.";
+      }
+
+      document.getElementById('captionTextDisplay').innerText = 
+`Ubah sampah plastik jadi ${idea.product} bernilai seni tinggi! ♻️✨
+Dibuat dari lelehan ${idea.wasteMaterial} dengan tekstur marmer estetik.
+
+Dengerin suara ketukan padatnya di akhir video! 🎧🔊
+
+#PlasticAlchemy #NgontenAI #OddlySatisfying #PureASMR #NoMusic #RecycleArt #DIYCraft`;
+    }
+
+    function copyCurrentShot() {
+      const text = document.getElementById('shotTextDisplay').innerText;
+      navigator.clipboard.writeText(text).then(() => alert(`Prompt Klip ${state.activeShot} disalin!`));
+    }
+
+    function copyCaption() {
+      const text = document.getElementById('captionTextDisplay').innerText;
+      navigator.clipboard.writeText(text).then(() => alert('Caption disalin!'));
     }
 
     function toggleModal(show) {
       document.getElementById('helpModal').style.display = show ? 'flex' : 'none';
     }
 
-    function confirmResetProject() {
-      if (confirm("Mulai proyek konten baru? Semua pilihan akan di-reset ke awal.")) {
-        state.duration = 20;
-        state.ratio = "9:16";
-        state.country = "Indonesia";
-        state.wok = "cast-iron";
+    function confirmReset() {
+      if (confirm("Reset dan buat konten baru dari awal?")) {
+        goToStep(1);
         document.getElementById('customIdeaInput').value = "";
-        
-        // Reset button active classes
-        document.querySelectorAll('.choice-grid').forEach(grid => {
-          const firstPill = grid.querySelector('.choice-pill');
-          if (firstPill) {
-            grid.querySelectorAll('.choice-pill').forEach(p => p.classList.remove('active'));
-            firstPill.classList.add('active');
-          }
-        });
-
-        renderCanvases();
         renderIdeasList(fallbackIdeas);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
   </script>
